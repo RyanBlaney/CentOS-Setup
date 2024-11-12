@@ -26,6 +26,33 @@ rm -rf ~/.config/nvim
 sudo yum autoremove -y
 sudo yum clean all
 
+# Check if Docker is installed
+if command -v docker >/dev/null 2>&1; then
+    # Option to remove Docker
+    read -p "Would you like to remove Docker? y/N: " response
+
+    # Check if the response is "y", "Y", "yes", or "YES"
+    if [[ "$response" =~ ^(y|Y|yes|YES)$ ]]; then
+        echo "Removing Docker..."
+
+        # Attempt to remove Docker components and check if successful
+        if sudo yum remove -y docker-ce docker-ce-cli containerd.io; then
+            # Disable Docker service to prevent it from starting again
+            sudo systemctl disable docker >/dev/null 2>&1
+            
+            echo "Docker removed successfully!"
+        else
+            echo "Error: Docker removal failed. Please check your package manager and try again."
+            exit 1
+        fi
+    else
+        echo "Docker removal skipped."
+    fi
+else
+    echo "Docker is not installed. No removal necessary."
+fi
+
+
 # Remove entries from bashrc if they were added during setup
 sed -i '/export PATH=".*\/.cargo\/bin:$PATH"/d' ~/.bashrc
 
