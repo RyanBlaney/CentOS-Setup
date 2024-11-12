@@ -54,6 +54,27 @@ sudo luarocks install luv
 # Ensure that symbolic links are set for shared libraries
 sudo ldconfig
 
+# Add docker
+read -p "Would you like to install docker? y/N: " response
+
+if [[ "$response" =~ ^(y|Y|yes|YES)$ ]]; then
+  echo "Installing Docker..."
+  
+  # Add Docker repository
+  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  
+  # Install Docker
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  
+  # Start and enable Docker service
+  sudo systemctl start docker
+  sudo systemctl enable docker
+  
+  echo "Docker installed successfully!"
+else
+  echo "Docker installation skipped."
+fi
+
 # Enable and configure additional services (if needed)
 echo "To access the internet, run 'sudo systemctl enable --now cockpit.socket'"
 
