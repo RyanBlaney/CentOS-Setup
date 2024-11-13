@@ -54,6 +54,10 @@ sudo luarocks install luv
 # Ensure that symbolic links are set for shared libraries
 sudo ldconfig
 
+# Install NodeJS
+curl -fsSL https://rpm.nodesource.com/setup_22.x | sudo bash -
+sudo dnf install -y nodejs
+
 # Add docker
 read -p "Would you like to install docker? y/N: " response
 
