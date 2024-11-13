@@ -1,7 +1,7 @@
 # CentOS Auto-Configuration Script
 
-This script configures a fresh CentOS machine to set up development tools, Neovim with a custom configuration, SSH access, and additional dependencies. The script also disables SELinux temporarily, installs Rust, Tree-sitter, and Python dependencies, and configures shared libraries to ensure compatibility with Neovim.  
-There is also a Dockerfile for setting up AlmaLinux environments.
+This script configures a fresh CentOS machine to set up development tools, Neovim with a custom configuration, SSH access, and additional dependencies. This script installs Rust, NodeJS, Tree-sitter, and Python dependencies, and configures shared libraries to ensure compatibility with Neovim.  
+There is also a Dockerfile for setting up AlmaLinux environments since it is the most relevant maintained RedHat Enterprise Linux OS on Docker.
 
 ## Features
 
