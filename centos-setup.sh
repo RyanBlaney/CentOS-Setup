@@ -46,7 +46,7 @@ rm nvim-linux64.tar.gz
 # Clone Neovim configuration from GitHub
 mkdir -p ~/.config
 cd ~/.config
-git clone https://github.com/RyanBlaney/nvim-config.git nvim
+git clone https://github.com/RyanBlaney/deployable-neovim-config.git nvim
 
 # Set up additional Neovim dependencies
 sudo luarocks install luv
